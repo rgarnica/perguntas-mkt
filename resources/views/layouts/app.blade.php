@@ -78,5 +78,9 @@
     <section class="section">
         @yield('content')
     </section>
+
+    
+    @yield('scripts')
+    
 </body>
 </html>
