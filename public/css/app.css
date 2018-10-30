@@ -14,3 +14,12 @@ body, html {
 .features .icon {
     margin-bottom: 0.5rem;
 }
+.box.form-box {
+    padding:0;
+	margin: 0.1rem;
+	border-radius: 0;
+
+}
+#btn-add-form {
+    margin-bottom: 1rem;
+}

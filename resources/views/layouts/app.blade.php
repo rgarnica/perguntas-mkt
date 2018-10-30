@@ -35,6 +35,11 @@
                 <a class="navbar-item">
                     {{ config('app.name') }}
                 </a>
+                @auth
+                <a class="navbar-item" href="{{ route('forms.index') }}"> 
+                    Meus Questionários
+                </a>
+                @endauth
             </div>
         
             <div class="navbar-end">

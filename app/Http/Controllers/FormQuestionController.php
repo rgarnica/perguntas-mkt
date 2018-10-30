@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Question;
+use App\Form;
+use App\FormQuestion;
 use Illuminate\Http\Request;
+use App\Types\FormQuestionTypes;
 
 class FormQuestionController extends Controller
 {
@@ -35,16 +37,22 @@ class FormQuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $q = Form::find($request->input('form_id'))->questions()->create([
+            'title' => 'Questão sem título',
+            'type' => FormQuestionTypes::OPEN
+        ]);
+
+        return view('partials.edit-question')->with(['question' => $q]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Question  $question
+     * @param  \App\FormQuestion  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show(FormQuestion $question)
     {
         //
     }
@@ -52,10 +60,10 @@ class FormQuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Question  $question
+     * @param  \App\FormQuestion  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit(Question $question)
+    public function edit(FormQuestion $question)
     {
         //
     }
@@ -67,7 +75,7 @@ class FormQuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, FormQuestion $question)
     {
         //
     }
@@ -75,11 +83,13 @@ class FormQuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Question  $question
+     * @param  \App\FormQuestion  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Question $question)
+    public function destroy(FormQuestion $question)
     {
-        //
+        $form = $question->form;
+        $question->delete();
+        return redirect(route('forms.edit', [$form]));
     }
 }

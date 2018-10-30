@@ -23,11 +23,18 @@
 
     <div class="field column is-1">
         <div class="control">
-            <button class="button is-light is-small">
-                <span class="icon">
-                    <i class="fas fa-trash"></i>
-                </span>
-            </button>
+            <form class="question-delete" 
+                  method="POST" 
+                  action="{{ url('/questions/' . $question->id ) }}"
+                  onsubmit="return askConfirmation()">
+                @csrf
+                @method('delete')
+                <button class="button is-light is-small">
+                    <span class="icon">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                </button>
+            </form>
         </div>
     </div>
 

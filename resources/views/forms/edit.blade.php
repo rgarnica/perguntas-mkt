@@ -4,9 +4,13 @@
 
 <div class="column is-8 is-offset-2">
 
-    
-    <div class="notification">
-    Fique atento com a quantidade de perguntas. Para prender a atenção do usuário e ter sucesso na sua pesquisa recomendamos no máximo 10 perguntas com enunciados simples e objetivos.
+    <div class="field">
+        <a class="button" href="{{ route('forms.index') }}">
+            <span class="icon">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            <span>Voltar para Meus Questionários</span>
+        </a>
     </div>
 
     <div class="box">
@@ -24,9 +28,11 @@
             </div>
         </div>
     
-        @each('partials.edit-question', $form->questions, 'question')
-        
-        <button class="button is-primary">
+        <section id="form-questions">
+            @each('partials.edit-question', $form->questions, 'question')
+        </section>
+
+        <button class="button is-primary" id="btn-add-question">
             <span class="icon">
                 <i class="fas fa-plus"></i>
             </span>

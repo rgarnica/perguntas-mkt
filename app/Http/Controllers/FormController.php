@@ -17,7 +17,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        //
+        return view('forms.index')->with(['forms' => Auth::user()->forms]);
     }
 
     /**
@@ -72,6 +72,7 @@ class FormController extends Controller
      */
     public function edit(Form $form)
     {
+        $this->authorize('view', $form);
         return view('forms.edit')->with(['form' => $form]);
     }
 
