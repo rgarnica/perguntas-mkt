@@ -42,6 +42,7 @@ class FormController extends Controller
         $form = Auth::user()->forms()->create([
             'title' => 'Questionário sem título',
             'description' => 'Descrição do questionário',
+            'link_hash' => str_random(),
             'expires_at' => Carbon::tomorrow()
         ]);
         

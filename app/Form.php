@@ -8,7 +8,7 @@ class Form extends Model
 {
     
     protected $fillable = [
-        'title', 'description', 'expires_at'
+        'title', 'description', 'expires_at', 'link_hash'
     ];
 
     public function questions()
