@@ -58,11 +58,19 @@
                         </span>
                     </a>
 
-                    <a class="button is-dark is-outlined">
-                        <span class="icon">
-                            <i class="fas fa-trash"></i>
-                        </span>
-                    </a>
+                    <form class="form is-inline" 
+                        method="POST" 
+                        action="{{ route('forms.destroy', [$form]) }}"
+                        onsubmit="return askConfirmation()">
+                        @csrf
+                        @method('delete')
+                        <button class="button is-dark is-outlined">
+                            <span class="icon">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                        </button>
+                    </form>
+
                 </div>
 
             </div>

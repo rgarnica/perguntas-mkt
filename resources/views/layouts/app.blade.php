@@ -85,6 +85,7 @@
     </section>
 
     
+    <script type="text/javascript" src="{{asset('js/default.js')}}"></script>
     @yield('scripts')
     
 </body>
