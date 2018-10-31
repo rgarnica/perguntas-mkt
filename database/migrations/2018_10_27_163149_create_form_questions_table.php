@@ -19,7 +19,10 @@ class CreateFormQuestionsTable extends Migration
             $table->integer('type');
             $table->unsignedInteger('form_id');
             $table->timestamps();
-            $table->foreign('form_id')->references('id')->on('forms');
+            $table->foreign('form_id')
+                    ->references('id')
+                    ->on('forms')
+                    ->onDelete('cascade');
         });
     }
 

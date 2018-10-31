@@ -18,6 +18,7 @@ class CreateFormsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->date('expires_at');
+            $table->string('link_hash');
             $table->unsignedInteger('user_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

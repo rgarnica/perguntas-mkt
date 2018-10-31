@@ -98,6 +98,7 @@ class FormController extends Controller
      */
     public function destroy(Form $form)
     {
-        //
+        $form->delete();
+        return redirect(route('forms.index'));
     }
 }
