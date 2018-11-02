@@ -23,13 +23,23 @@ function updateFormData() {
 function updateQuestion(e) {
     let $field = e.target;
 
+    let updatedQuestion = (e) => {
+        if (e.target.readyState === 4 && e.target.response != '') {
+            let question = $field.closest('.form-question');
+            let updatedQuestion = document.createElement('template');
+            updatedQuestion.innerHTML = e.target.response;
+            question.replaceWith(updatedQuestion.content);
+        }
+    }
+
     sendRequest(
         'PUT',
         $field.getAttribute('data-update-url'),
         {
             field: $field.getAttribute('name'),
             value: $field.value
-        }
+        },
+        updatedQuestion
     )
 
 }

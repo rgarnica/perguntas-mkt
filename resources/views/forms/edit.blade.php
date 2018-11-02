@@ -45,9 +45,9 @@
     
     </div>
     
-        <section id="form-questions">
-            @each('partials.edit-question', $form->questions, 'question')
-        </section>
+    <section id="form-questions">
+        @each('partials.edit-question', $form->questions, 'question')
+    </section>
 
     <section class="section add-section">
         <div class="field ">

@@ -94,6 +94,9 @@ class QuestionController extends Controller
             } else {
                 $question->alternatives()->delete();
             }
+
+            //se alterou o tipo, retorna a view para substituir
+            return view('partials.edit-question')->with('question', $question);
         }
     }
 
