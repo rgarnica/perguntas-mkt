@@ -25,6 +25,7 @@
         </span>
         <span>Criar Questionário</span>
     </a>
+
     <form id="create-form" method="POST" action="{{url('forms')}}">
         @csrf
     </form>
@@ -40,7 +41,9 @@
                 </div>
 
                 <div class="column is-2 has-text-centered">
-                    <a class="button is-link is-outlined">
+                    <a onclick="return openShareModal(event)"
+                       class="button is-link is-outlined" 
+                       href="{{ url('ans?form=' . $form->link_hash) }}">
                         <span class="icon">
                             <i class="fas fa-share-alt"></i>
                         </span>
@@ -77,6 +80,33 @@
             @endforeach
         
     @endif
+</div>
+
+
+<div class="modal">
+    <div class="modal-background" onclick="closeModal(event)"></div>
+    <div class="modal-content">
+        <div class="box">
+            <h1 class="title is-4">Compartilhe o link abaixo:</h1>
+            <h2 class="subtitle is-6">Envie para seu público alvo para que eles possam responder as perguntas.</h2>
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input type="text" class="input" id="txt-form-link">
+                </div>
+                <div class="control">
+                    <button class="button is-info is-light" onclick="copyLink()">
+                        <span class="icon">
+                            <i class="fas fa-copy"></i>
+                        </span>
+                        <span>Copiar Link</span>
+                    </button>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close" onclick="closeModal(event)"></button>
 </div>
 
 @endsection
