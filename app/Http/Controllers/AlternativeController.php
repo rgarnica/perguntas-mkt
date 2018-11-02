@@ -74,7 +74,8 @@ class AlternativeController extends Controller
      */
     public function update(Request $request, Alternative $alternative)
     {
-        //
+        $alternative->title = $request->input('value');
+        $alternative->save();
     }
 
     /**

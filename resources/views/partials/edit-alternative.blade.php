@@ -1,7 +1,8 @@
 <div class="field alternative has-addons">
 
     <div class="control is-expanded">
-        <input 
+        <input
+            onblur="updateQuestion(event)" 
             class="input"
             name="title" 
             value="{{ $alternative->title }}" 
