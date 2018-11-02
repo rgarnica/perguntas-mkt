@@ -23,7 +23,11 @@ body, html {
 	border-radius: 0;
 
 }
+#btn-add-question {
+	box-shadow: 2px 3px 4px -4px #000;
+}
 #btn-add-form {
+    box-shadow: 2px 3px 4px -4px #000;
     margin-bottom: 1rem;
 }
 .section.add-section {

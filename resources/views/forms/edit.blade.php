@@ -58,11 +58,11 @@
     <section class="section add-section">
         <div class="field ">
             <div class="control has-text-centered">
-                <button class="button is-primary" id="btn-add-question">
+                <button class="button is-large is-primary" id="btn-add-question">
                     <span class="icon">
                         <i class="fas fa-plus"></i>
                     </span>
-                    <span>Nova Questão</span>
+                    <span>Adicionar Questão</span>
                 </button>
             </div>
         </div>
