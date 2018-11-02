@@ -37,7 +37,7 @@
         <label for="" class="label is-small">Quando a pesquisa expira?</label>
         <div class="field is-grouped">
             <div class="control">
-                <input type="date" class="input" name="expires_at" id="expires_at" value="{{ $form->expires_at }}">
+                <input type="date" class="input" name="expires_at" id="expires_at" value="{{ $form->expires_at->format('Y-m-d') }}">
             </div>
             <div class="control help has-text-grey is-size-7">
                 <span class="icon">

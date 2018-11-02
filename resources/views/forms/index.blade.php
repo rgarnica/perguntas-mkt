@@ -49,7 +49,7 @@
                         </span>
                     </a>
 
-                    <a class="button is-success is-outlined">
+                    <a class="button is-success is-outlined" href="{{ route('forms.show', [$form]) }}">
                         <span class="icon">
                             <i class="fas fa-chart-bar"></i>
                         </span>

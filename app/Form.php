@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Form extends Model
 {
+
+    protected $dates = [
+        'expires_at'
+    ];
     
     protected $fillable = [
         'title', 'description', 'expires_at', 'link_hash'
