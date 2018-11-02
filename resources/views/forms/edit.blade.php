@@ -12,15 +12,6 @@
         </ul>
     </nav>
         
-    <!--<div class="field">
-        <a class="button" href="{{ route('forms.index') }}">
-            <span class="icon">
-                <i class="fas fa-arrow-left"></i>
-            </span>
-            <span>Voltar para Meus Questionários</span>
-        </a>
-    </div>-->
-
     <div class="box">
         <input type="hidden" id="form-id" value="{{ $form->id }}" />
 
@@ -40,6 +31,21 @@
                           name="description"
                           class="textarea">{{ $form->description }}
                 </textarea>
+            </div>
+        </div>
+
+        <label for="" class="label is-small">Quando a pesquisa expira?</label>
+        <div class="field is-grouped">
+            <div class="control">
+                <input type="date" class="input" name="expires_at" id="expires_at" value="{{ $form->expires_at }}">
+            </div>
+            <div class="control help has-text-grey is-size-7">
+                <span class="icon">
+                    <i class="fas fa-lightbulb"></i>
+                </span>
+                
+                Após a data de expiração, os usuários que possuem o link não consiguirão responder seu questionário.
+            
             </div>
         </div>
     

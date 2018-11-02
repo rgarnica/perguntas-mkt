@@ -1,5 +1,6 @@
 var $formTitle = document.querySelector('#form-title');
 var $formDescription = document.querySelector('#form-description');
+var $formExpiresAt = document.querySelector('#expires_at')
 var $btnAddQuestion = document.querySelector('#btn-add-question');
 
 var formId = document.querySelector('#form-id').value;
@@ -8,6 +9,7 @@ var formUrl = '/forms/' + formId;
 $formTitle.addEventListener('blur', updateFormData);
 $formDescription.addEventListener('blur', updateFormData);
 $btnAddQuestion.addEventListener('click', addQuestion);
+$formExpiresAt.addEventListener('change', updateFormData);
 
 function updateFormData() {
     sendRequest(
@@ -15,7 +17,8 @@ function updateFormData() {
         formUrl, 
         {
             'title': $formTitle.value,
-            'description': $formDescription.value
+            'description': $formDescription.value,
+            'expires_at': $formExpiresAt.value
         }
     );
 }

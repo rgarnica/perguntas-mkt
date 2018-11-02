@@ -90,6 +90,7 @@ class FormController extends Controller
     {
         $form->title = $request->input('title') ?: 'Questionário sem título';
         $form->description = $request->input('description') ?: 'Sem descrição';
+        $form->expires_at = $request->input('expires_at') ?: Carbon::tomorrow();
         $form->save();
     }
 
