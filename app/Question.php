@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FormQuestion extends Model
+class Question extends Model
 {
     
     protected $fillable = [
@@ -14,6 +14,11 @@ class FormQuestion extends Model
     public function form()
     {
         return $this->belongsTo(Form::class);
+    }
+
+    public function alternatives()
+    {
+        return $this->hasMany(Alternative::class);
     }
 
 }

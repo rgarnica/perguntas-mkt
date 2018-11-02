@@ -24,5 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('forms', 'FormController');
-    Route::resource('questions', 'FormQuestionController');
+    Route::resource('questions', 'QuestionController');
+    Route::resource('alternatives', 'AlternativeController');
 });

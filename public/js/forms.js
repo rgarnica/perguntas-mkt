@@ -60,3 +60,34 @@ function addQuestion() {
         onAddedQuestion
     )
 }
+
+function addAlternative(e) {
+    let $btn = e.currentTarget;
+
+    $btn.blur();
+    
+    toggleLoadingState($btn);
+
+
+    let onAddedAlternative = (e) => {
+        if (e.target.readyState === 4) {
+            let $questionWrapper = $btn.closest('.form-question');
+
+            let alternative = document.createElement('template');
+            alternative.innerHTML = e.target.response;
+
+            $questionWrapper.appendChild(alternative.content);
+            toggleLoadingState($btn);
+        }
+    }
+
+
+    sendRequest(
+        'POST',
+        '/alternatives',
+        {
+            'question_id': $btn.getAttribute('data-question-id')
+        },
+        onAddedAlternative
+    )
+}

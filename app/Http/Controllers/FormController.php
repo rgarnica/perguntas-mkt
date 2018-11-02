@@ -99,9 +99,10 @@ class FormController extends Controller
      * @param  \App\Form  $form
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Form $form)
+    public function destroy(Request $request, Form $form)
     {
         $form->delete();
+        $request->session()->flash('toast', 'Questionário removido com sucesso!');
         return redirect(route('forms.index'));
     }
 }

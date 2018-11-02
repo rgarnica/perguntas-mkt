@@ -13,7 +13,7 @@ class Form extends Model
 
     public function questions()
     {
-        return $this->hasMany(FormQuestion::class);
+        return $this->hasMany(Question::class);
     }
 
     public function user()

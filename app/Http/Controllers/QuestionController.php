@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Form;
-use App\FormQuestion;
+use App\Question;
 use Illuminate\Http\Request;
 use App\Types\FormQuestionTypes;
 
-class FormQuestionController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -49,10 +49,10 @@ class FormQuestionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\FormQuestion  $question
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(FormQuestion $question)
+    public function show(Question $question)
     {
         //
     }
@@ -60,10 +60,10 @@ class FormQuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\FormQuestion  $question
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function edit(FormQuestion $question)
+    public function edit(Question $question)
     {
         //
     }
@@ -75,7 +75,7 @@ class FormQuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FormQuestion $question)
+    public function update(Request $request, Question $question)
     {
         $field = $request->input('field');
         $question->$field = $request->input('value');
@@ -85,10 +85,10 @@ class FormQuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\FormQuestion  $question
+     * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FormQuestion $question)
+    public function destroy(Question $question)
     {
         $form = $question->form;
         $question->delete();
