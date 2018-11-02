@@ -84,6 +84,12 @@
         @yield('content')
     </section>
 
+    @if(session()->has('toast'))
+        <div class="notification is-dark toast">
+            <span>{{ session('toast') }}</span>
+        </div>
+    @endif
+
     
     <script type="text/javascript" src="{{asset('js/default.js')}}"></script>
     @yield('scripts')

@@ -1,5 +1,14 @@
 var token = document.querySelector("meta[name='csrf-token']").getAttribute('content');
 
+var toast = document.querySelector('.toast');
+
+if (toast) {
+    setTimeout(function() {
+        toast.remove();
+    }, 4000);
+}
+
+
 function sendRequest(method, url, objData, callback = '') {
     let xhr = new XMLHttpRequest();
     let data = JSON.stringify(objData);
@@ -42,4 +51,15 @@ function closeModal(e) {
 function copyLink() {
     document.querySelector('#txt-form-link').select();
     document.execCommand('copy');
+
+    let notification = document.createElement('div');
+    notification.setAttribute('class', 'notification toast is-dark');
+
+    notification.innerHTML = "<span>Link Copiado com Sucesso!</span>";
+
+    document.body.appendChild(notification);
+
+    setTimeout(function(){
+        notification.remove();
+    }, 4000);
 }

@@ -20,6 +20,20 @@ function updateFormData() {
     );
 }
 
+function updateQuestion(e) {
+    let $field = e.target;
+
+    sendRequest(
+        'PUT',
+        $field.getAttribute('data-update-url'),
+        {
+            field: $field.getAttribute('name'),
+            value: $field.value
+        }
+    )
+
+}
+
 function addQuestion() {
 
     toggleLoadingState($btnAddQuestion);

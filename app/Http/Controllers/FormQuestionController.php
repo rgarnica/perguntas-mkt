@@ -77,7 +77,9 @@ class FormQuestionController extends Controller
      */
     public function update(Request $request, FormQuestion $question)
     {
-        //
+        $field = $request->input('field');
+        $question->$field = $request->input('value');
+        $question->save();
     }
 
     /**

@@ -51,6 +51,8 @@ class FormController extends Controller
             'type' => FormQuestionTypes::OPEN
         ]);
 
+        $request->session()->flash('toast', 'Formulário criado com sucesso. As alterações serão gravadas automaticamente.');
+
         return redirect()->route('forms.edit', $form->id);
     }
 
