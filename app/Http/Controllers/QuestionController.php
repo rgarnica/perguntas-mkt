@@ -6,6 +6,7 @@ use App\Form;
 use App\Question;
 use Illuminate\Http\Request;
 use App\Types\FormQuestionTypes;
+use App\Services\AlternativeService;
 
 class QuestionController extends Controller
 {
@@ -75,11 +76,25 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, Question $question, AlternativeService $sv)
     {
         $field = $request->input('field');
-        $question->$field = $request->input('value');
+        $value = $request->input('value');
+        $question->$field = $value;
         $question->save();
+
+        if ($field === 'type') {
+
+            $value = (int) $value;
+
+            if ($value === FormQuestionTypes::OBJECTIVE) {
+                for ($i = 1; $i <= 3; $i ++) {
+                    $sv->createDefaultAlternative($question->id);
+                }
+            } else {
+                $question->alternatives()->delete();
+            }
+        }
     }
 
     /**
