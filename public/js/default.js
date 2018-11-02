@@ -4,8 +4,8 @@ var toast = document.querySelector('.toast');
 
 if (toast) {
     setTimeout(function() {
-        toast.remove();
-    }, 4000);
+        toast.classList.add('fadeOutDown');
+    }, 3500);
 }
 
 
@@ -53,13 +53,13 @@ function copyLink() {
     document.execCommand('copy');
 
     let notification = document.createElement('div');
-    notification.setAttribute('class', 'notification toast is-dark');
+    notification.setAttribute('class', 'notification toast is-dark animated fadeInUp faster');
 
     notification.innerHTML = "<span>Link Copiado com Sucesso!</span>";
 
     document.body.appendChild(notification);
 
     setTimeout(function(){
-        notification.remove();
-    }, 4000);
+        notification.classList.add('fadeOutDown');
+    }, 3500);
 }
