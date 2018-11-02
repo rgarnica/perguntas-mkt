@@ -1,7 +1,7 @@
 @inject('types', 'App\Types\FormQuestionTypes')
 
-<div class="form-question">
-    <hr>
+<div class="box form-question">
+
 
     <div class="field is-grouped">
 

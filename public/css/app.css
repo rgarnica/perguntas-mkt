@@ -28,7 +28,6 @@ body, html {
 }
 .section.add-section {
 	padding: 1.5rem 0rem 0;
-	border-top: 1px solid #ccc;
 	margin-top: 2rem;
 }
 .notification.toast {
