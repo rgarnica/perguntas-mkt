@@ -96,24 +96,26 @@
         <div class="modal-background" onclick="closeModal(event)"></div>
         <div class="modal-content animated bounceIn faster">
             <div class="box">
+                <div class="has-text-centered">
+
+                    <span class="is-large icon has-text-warning">
+                        <i class="fas fa-2x fa-exclamation-triangle"></i>
+                    </span>
                 
-                <h1 class="title is-4" id="title-delete"></h1>
-                <h2 class="subtitle is-6">Você não poderá desfazer essa ação e os dados serão apagados.</h2>
+                    <h1 class="title is-4" id="title-delete"></h1>
+                    <h2 class="subtitle is-6">Você não poderá desfazer essa ação e os dados serão apagados.</h2>
 
-                <div class="field is-grouped is-pulled-right">
-                    <div class="control">
-                        <button id="btn-delete" class="button is-danger is-outlined">
-                            Deletar
-                        </button>
-                    </div>
-                    <div class="control">
-                        <button id="btn-cancel" class="button is-light">
-                            Cancelar
-                        </button>
-                    </div>
+              
+                    <button id="btn-delete" class="button is-danger">
+                        Sim, Deletar!
+                    </button>
+                
+                    <button id="btn-cancel" class="button is-light">
+                        Cancelar
+                    </button>
+                        
+
                 </div>
-
-                <div class="is-clearfix"></div>
                 
             </div>
         </div>

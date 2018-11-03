@@ -33,7 +33,7 @@
             <form class="question-delete" 
                     method="POST" 
                     action="{{ route('questions.destroy', [$question]) }}"
-                    onsubmit="return askConfirmation(event)">
+                    onsubmit="return askConfirmation(event, 'Certeza que quer remover a questão?')">
                 @csrf
                 @method('delete')
                 <button class="button is-dark is-small is-outlined">
