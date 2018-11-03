@@ -33,8 +33,30 @@ function toggleLoadingState($element) {
     }
 }
 
-function askConfirmation(e) {
-    return confirm("Confirme para deletar. Todos os dados serão perdidos.");
+function askConfirmation(e, message = 'Confirme para deletar o registro.') {
+
+    if (e.target.getAttribute('data-confirmed') != 1) {
+
+        let modal = document.querySelector('#modal-confirm-delete');
+
+        modal.classList.add('is-active');
+        document.querySelector('#title-delete').textContent = message;
+
+        let onCancel = () => {
+            modal.classList.remove('is-active');
+        }
+
+        let onDelete = () => {
+            modal.classList.remove('is-active');
+            e.target.setAttribute('data-confirmed', 1);
+            e.target.submit();
+        }
+
+        document.querySelector('#btn-cancel').addEventListener('click', onCancel);
+        document.querySelector('#btn-delete').addEventListener('click', onDelete);
+
+        return false;
+    }
 }
 
 function openShareModal(e) {

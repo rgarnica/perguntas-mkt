@@ -92,6 +92,35 @@
     @endif
 
     
+    <div class="modal" id="modal-confirm-delete">
+        <div class="modal-background" onclick="closeModal(event)"></div>
+        <div class="modal-content animated bounceIn faster">
+            <div class="box">
+                
+                <h1 class="title is-4" id="title-delete"></h1>
+                <h2 class="subtitle is-6">Você não poderá desfazer essa ação e os dados serão apagados.</h2>
+
+                <div class="field is-grouped is-pulled-right">
+                    <div class="control">
+                        <button id="btn-delete" class="button is-danger is-outlined">
+                            Deletar
+                        </button>
+                    </div>
+                    <div class="control">
+                        <button id="btn-cancel" class="button is-light">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="is-clearfix"></div>
+                
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal(event)"></button>
+    </div>
+
+
     <script type="text/javascript" src="{{asset('js/default.js')}}"></script>
     @yield('scripts')
     

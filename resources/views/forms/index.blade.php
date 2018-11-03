@@ -64,7 +64,7 @@
                     <form class="form is-inline" 
                         method="POST" 
                         action="{{ route('forms.destroy', [$form]) }}"
-                        onsubmit="return askConfirmation()">
+                        onsubmit="return askConfirmation(event)">
                         @csrf
                         @method('delete')
                         <button class="button is-dark is-outlined">
