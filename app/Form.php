@@ -15,6 +15,11 @@ class Form extends Model
         'title', 'description', 'expires_at', 'link_hash'
     ];
 
+    public static function findByHash(string $hash)
+    {
+        return static::where('link_hash', $hash)->first();
+    }
+
     public function questions()
     {
         return $this->hasMany(Question::class);
