@@ -43,7 +43,7 @@
                 <div class="column is-2 has-text-centered">
                     <a onclick="return openShareModal(event)"
                        class="button is-link is-outlined" 
-                       href="{{ url('ans?form=' . $form->link_hash) }}">
+                       href="{{ url('quiz/' . $form->link_hash) }}">
                         <span class="icon">
                             <i class="fas fa-share-alt"></i>
                         </span>
