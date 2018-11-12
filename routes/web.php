@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/quiz/{quizHash}', 'QuizController@index')->name('quiz');
+Route::post('/answers', 'AnswerController@store')->name('answers.store');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('forms', 'FormController');

@@ -17,7 +17,7 @@ class Form extends Model
 
     public static function findByHash(string $hash)
     {
-        return static::where('link_hash', $hash)->first();
+        return static::where('link_hash', $hash)->firstOrFail();
     }
 
     public function questions()
@@ -28,6 +28,11 @@ class Form extends Model
     public function user()
     {
         return $this->hasOne(User::class);
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 
 }
