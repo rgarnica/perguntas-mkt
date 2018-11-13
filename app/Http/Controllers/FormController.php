@@ -15,9 +15,11 @@ class FormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('forms.index')->with(['forms' => Auth::user()->forms]);
+        return view('forms.index')
+            ->with(['forms' => Auth::user()->forms()->simplePaginate(5)])
+            ->withInput($request->all());
     }
 
     /**
