@@ -19,6 +19,7 @@ class CreateAnswersTable extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('hash');
+            $table->boolean('submited')->default(false);
             $table->unsignedInteger('form_id');
             $table->timestamps();
             $table->foreign('form_id')
