@@ -35,4 +35,9 @@ class Form extends Model
         return $this->hasMany(Answer::class);
     }
 
+    public function submitedAnswers()
+    {
+        return $this->hasMany(Answer::class)->submited();
+    }
+
 }

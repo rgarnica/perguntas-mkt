@@ -20,14 +20,8 @@
                     </div>
                     <div class="level-item has-text-centered">
                         <div>
-                        <p class="heading">Acessos</p>
-                        <p class="title">123</p>
-                        </div>
-                    </div>
-                    <div class="level-item has-text-centered">
-                        <div>
                         <p class="heading">Respostas</p>
-                        <p class="title">456K</p>
+                        <p class="title">{{ $form->submitedAnswers()->count() }}</p>
                         </div>
                     </div>
                     <div class="level-item has-text-centered">

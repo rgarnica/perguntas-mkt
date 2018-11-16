@@ -27,5 +27,10 @@ class Answer extends Model
         return $this->belongsToMany(Question::class);
     }
 
+    public function scopeSubmited($query)
+    {
+        return $query->where('submited', true);
+    }
+
 
 }

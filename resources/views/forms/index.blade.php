@@ -80,19 +80,20 @@
                     <div class="column is-2 has-text-centered">
                         <a onclick="return openShareModal(event)"
                         class="button is-link is-outlined" 
-                        href="{{ url('quiz/' . $form->link_hash) }}">
+                        href="{{ url('quiz/' . $form->link_hash) }}"
+                        title="Visualizar Link de Compartilhamento">
                             <span class="icon">
                                 <i class="fas fa-share-alt"></i>
                             </span>
                         </a>
 
-                        <a class="button is-success is-outlined" href="{{ route('forms.show', [$form]) }}">
+                        <a title="Visualizar Estatísticas" class="button is-success is-outlined" href="{{ route('forms.show', [$form]) }}">
                             <span class="icon">
                                 <i class="fas fa-chart-bar"></i>
                             </span>
                         </a>
                         
-                        <a class="button is-dark is-outlined" href="{{ route('forms.edit', [$form]) }}">
+                        <a title="Alterar Questionário" class="button is-dark is-outlined" href="{{ route('forms.edit', [$form]) }}">
                             <span class="icon">
                                 <i class="fas fa-pen"></i>
                             </span>
@@ -104,7 +105,7 @@
                             onsubmit="return askConfirmation(event, 'Certeza que quer excluir o formulário?')">
                             @csrf
                             @method('delete')
-                            <button class="button is-dark is-outlined">
+                            <button title="Excluir formulário" class="button is-dark is-outlined">
                                 <span class="icon">
                                     <i class="fas fa-trash"></i>
                                 </span>

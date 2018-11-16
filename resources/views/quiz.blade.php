@@ -55,7 +55,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="card-footer-item">
-                                <a href="" class="button is-success is-inverted">
+                                <a href="{{ route('index') }}" target="_blank" class="button is-success is-inverted">
                                     <span class="icon">
                                         <i class="fas fa-external-link-alt"></i>
                                     </span>
@@ -77,29 +77,40 @@
                         <h2 class="subtitle">
                             {{ $form->description }}
                         </h2>
-                        <form class="box has-text-left" method="POST" action="{{ route('answers.store') }}">
-                            @csrf
-                            <input type="hidden" name="form_hash" value="{{$form->link_hash}}">
-                            <h1 class="title has-text-grey is-5">Informe seu e-mail para começar</h1>
-                            <div class="field">
-                                <div class="control">
-                                    <input type="email" required name="email" class="input" autofocus placeholder="Digite seu e-mail">
-                                </div>
-                                @if ($errors->has('email'))
-                                    <span class="help is-danger">{{ $errors->first('email') }}</span>
-                                @endif
-                                <span class="help">Seu e-mail não será compartilhado com ninguém</span>
-                                <span class="help">Não enviaremos e-mail para você</span>
+                        
+
+                        @if($form->expires_at < \Carbon\Carbon::now())
+                            <div class="notification is-danger">
+                                Este questionário expirou!
                             </div>
-                            <div class="field">
-                                <div class="control">
-                                    <button class="button is-success is-fullwidth">
-                                        Iniciar
-                                    </button>
+                        @else
+                            <form class="box has-text-left" method="POST" action="{{ route('answers.store') }}">
+                                @csrf
+                                <input type="hidden" name="form_hash" value="{{$form->link_hash}}">
+                                <h1 class="title has-text-grey is-5">Informe seu e-mail para começar</h1>
+                                <div class="field">
+                                    <div class="control">
+                                        <input type="email" required name="email" class="input" autofocus placeholder="Digite seu e-mail">
+                                    </div>
+                                    @if ($errors->has('email'))
+                                        <span class="help is-danger">{{ $errors->first('email') }}</span>
+                                    @endif
+                                    <span class="help">Seu e-mail não será compartilhado com ninguém</span>
+                                    <span class="help">Não enviaremos e-mail para você</span>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="field">
+                                    <div class="control">
+                                        <button class="button is-success is-fullwidth">
+                                            Iniciar
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        @endif
                     </div>                  
+                @elseif($answer->submited)
+                    <h1 class="title">Você já respondeu esse questionário</h1>
+                    <h2 class="subtitle">Obrigado pela participação!</h2>
                 @else
                     <input type="hidden" name="answer-hash" id="answer-hash" value="{{ $answer->hash }}">
                     @foreach ($form->questions as $question)
@@ -150,17 +161,17 @@
             <nav class="navbar">
                 <div class="container">
                     <div class="navbar-brand">
-                        <a class="navbar-item">
+                        <a class="navbar-item" href="{{ route('index') }}">
                             <img src="{{ asset('img/logo.png') }}" alt="Logo">
                         </a>
-                        <a href="" class="navbar-item">
+                        <a href="{{ route('index') }}" class="navbar-item">
                             {{ config('app.name') }}
                         </a>
                     </div>
                     <div id="navbarMenuHeroA" class="navbar-menu">
                     <div class="navbar-end">
                         <span class="navbar-item">
-                            <a class="button is-primary is-outlined">
+                            <a target="_blank" class="button is-primary is-outlined" href="{{ route('index') }}">
                                 <span class="icon">
                                 <i class="fas fa-external-link-alt"></i>
                                 </span>
