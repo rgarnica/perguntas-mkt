@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Form;
+use App\AnswerQuestion;
 use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
@@ -19,6 +20,11 @@ class Answer extends Model
     public function form()
     {
         return $this->belongsTo(Form::class);
+    }
+
+    public function responses()
+    {
+        return $this->belongsToMany(Question::class);
     }
 
 

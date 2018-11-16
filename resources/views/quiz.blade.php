@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <link rel="stylesheet" href="{{ asset('css/bulma-checkradio.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>{{ config('app.name') }} | {{ $form->title }}</title>
     <link rel='shortcut icon' type='image/png' href='{{ asset('img/logo.png') }}' />
 </head>
@@ -27,7 +31,7 @@
                         <div id="navbarMenuHeroA" class="navbar-menu">
                             <div class="navbar-end">
                                 <a class="navbar-item">
-                                    Pergunta 1 de {{ $form->questions()->count() }}
+                                    Pergunta &nbsp;<span id="spn-question-number">1</span>&nbsp; de {{ $form->questions()->count() }}
                                 <a>
                             </div>
                         </div>
@@ -38,6 +42,32 @@
 
         <div class="hero-body">
             <div class="container has-text-centered">
+
+                <div id="thanks-card" class="column is-4 is-offset-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-header-title">
+                                Obrigado!
+                            </span>
+                        </div>
+                        <div class="card-content">
+                            Você finalizou o questionário. Suas respostas ajudarão em nossa análise.
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-footer-item">
+                                <a href="" class="button is-success is-inverted">
+                                    <span class="icon">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </span>
+                                    <span>Veja como é fácil criar um questionário.</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
                 @if(is_null($answer))
                     <div class="column is-6 is-offset-3">
 
@@ -71,37 +101,45 @@
                         </form>
                     </div>                  
                 @else
+                    <input type="hidden" name="answer-hash" id="answer-hash" value="{{ $answer->hash }}">
                     @foreach ($form->questions as $question)
+
+                    <div data-question-id="{{ $question->id }}" class="question animated">
                         
                         <h1 class="title">{{ $question->title }}</h1>
 
                         @if($question->type === $types::OPEN)
                             <div class="field">
                                 <div class="control">
-                                    <textarea name="" id="" rows="5" class="textarea"></textarea>
+                                    <textarea class="textarea open-field" name="" id="" rows="5" class="textarea"></textarea>
                                 </div>
                             </div>
                         @else
-                            @foreach ($question->alternatives as $alt)
-                                <div class="field">
-                                    <input type="radio" name="alternativa" class="is-checkradio has-background-color is-primary" name="" id="">
-                                    <label for="" class="label">{{ $alt->title }}</label>
-                                </div>
+                            @foreach ($question->alternatives as $i => $alt)
+                            <div class="field">
+                                <input value="{{ $alt->id }}" class="is-checkradio has-background-color is-primary" id="alternative_{{ $i }}" type="radio" name="radioAlternative">
+                                <label for="alternative_{{ $i }}" class="alternativeLabel">{{ $alt->title }}</label>
+                            </div>
                             @endforeach
                         @endif
 
-                        <button 
-                            class="button is-success is-large" 
-                            disabled>
-                        
-                        @if ($loop->last)
-                            Finalizar
-                        @else
-                            Avançar para a próxima questão
-                        @endif
-                        </button>
+                    </div>
 
                     @endforeach
+                
+
+                    <section class="section has-text-centered">
+                        <button 
+                            id="btn-next"
+                            class="button is-success is-large" 
+                            disabled>
+                            Avançar para a próxima questão
+                        </button>
+                    </section>
+
+                    
+
+                    
                 @endif
             </div>
 
@@ -137,5 +175,7 @@
             
         </div>
     </div>
+    <script type="text/javascript" src="{{asset('js/default.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/quiz.js')}}"></script>
 </body>
 </html>

@@ -1,4 +1,7 @@
-var token = document.querySelector("meta[name='csrf-token']").getAttribute('content');
+var token = document.querySelector("meta[name='csrf-token']");
+if (token) {
+    token = token.getAttribute('content');
+}
 
 var toast = document.querySelector('.toast');
 

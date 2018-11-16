@@ -23,6 +23,12 @@ body, html {
 	border-radius: 0;
 
 }
+#thanks-card {
+    display: none;
+}
+.question {
+    display: none;
+}
 #btn-add-question {
 	box-shadow: 2px 3px 4px -4px #000;
 }
