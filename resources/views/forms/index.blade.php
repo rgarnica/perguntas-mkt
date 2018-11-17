@@ -15,10 +15,9 @@
         <h1 class="title has-text-grey">Você ainda não tem questionários</h1>
     @endif
 
-    <div class="field is-grouped is-desktop is-vcentered is-pulled-right">
+    <div class="field">
 
-      
-        <div class="control">
+        <div class="control has-text-centered">
             <a id="btn-add-form"
                 class="button is-medium is-primary" 
                 href="{{ url('forms') }}"
@@ -31,26 +30,6 @@
             </a>
         </div>
         
-        <form>
-            <div class="field has-addons">
-                
-                    <div class="control is-expanded">
-                        <input type="text" name="search" id="search" placeholder="Pesquisar Questionário..." class="input is-medium" value="{{ old('search') }}">
-                    </div>
-                    <div class="control">
-                        
-                        <button class="button is-medium">
-                            <span class="icon">
-                                <i class="fas fa-search"></i>
-                            </span>
-                            <span>Pesquisar</span>
-                        </button>
-                        
-                    </div>
-                
-            </div>
-        </form>
-
     </div>
 
     <div class="is-clearfix"></div>

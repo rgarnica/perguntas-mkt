@@ -25,6 +25,16 @@ class Form extends Model
         return $this->hasMany(Question::class);
     }
 
+    public function objectiveQuestions()
+    {
+        return $this->questions()->objectives();
+    }
+
+    public function openQuestions()
+    {
+        return $this->questions()->open();
+    }
+
     public function user()
     {
         return $this->hasOne(User::class);

@@ -17,5 +17,16 @@ class Alternative extends Model
         return $this->belongsTo(Question::class);
     }
 
+    public function getMinifiedAttribute()
+    {
+        $maxLen = 12;
+
+        if (strlen($this->title) > $maxLen) {
+            return substr($this->title, 0, $maxLen) . '...';
+        } else {
+            return $this->title;
+        }
+    }
+
 
 }

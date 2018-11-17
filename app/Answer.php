@@ -24,7 +24,8 @@ class Answer extends Model
 
     public function responses()
     {
-        return $this->belongsToMany(Question::class);
+        return $this->belongsToMany(Question::class)
+            ->withPivot('response', 'alternative_id');
     }
 
     public function scopeSubmited($query)

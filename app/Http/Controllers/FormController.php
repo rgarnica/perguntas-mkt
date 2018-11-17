@@ -66,6 +66,7 @@ class FormController extends Controller
      */
     public function show(Form $form)
     {
+        $this->authorize('view', $form);
         return view('forms.view', ['form' => $form]);
     }
 
@@ -90,6 +91,7 @@ class FormController extends Controller
      */
     public function update(Request $request, Form $form)
     {
+        $this->authorize('update', $form);
         $form->title = $request->input('title') ?: 'Questionário sem título';
         $form->description = $request->input('description') ?: 'Sem descrição';
         $form->expires_at = $request->input('expires_at') ?: Carbon::tomorrow();
@@ -104,6 +106,7 @@ class FormController extends Controller
      */
     public function destroy(Request $request, Form $form)
     {
+        $this->authorize('forceDelete', $form);
         $form->delete();
         $request->session()->flash('toast', 'Questionário removido com sucesso!');
         return redirect(route('forms.index'));

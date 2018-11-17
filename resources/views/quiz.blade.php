@@ -127,9 +127,9 @@
                             </div>
                         @else
                             @foreach ($question->alternatives as $i => $alt)
-                            <div class="field">
-                                <input value="{{ $alt->id }}" class="is-checkradio has-background-color is-primary" id="alternative_{{ $i }}" type="radio" name="radioAlternative">
-                                <label for="alternative_{{ $i }}" class="alternativeLabel">{{ $alt->title }}</label>
+                            <div class="field has-text-left">
+                                <input value="{{ $alt->id }}" class="is-checkradio has-background-color is-primary" id="alternative_{{ $alt->id }}" type="radio" name="radioAlternative">
+                                <label for="alternative_{{ $alt->id }}" class="alternativeLabel">{{ $alt->title }}</label>
                             </div>
                             @endforeach
                         @endif
