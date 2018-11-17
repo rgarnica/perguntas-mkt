@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="hero is-primary has-text-center is-large">
+    <section class="section">
+    <div class="hero is-primary has-text-center">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">{{ $form->title }}</h1>
-                <h2 class="subtitle">{{ $form->description }}</h2>
             </div>
         </div>
         <div class="hero-foot">
@@ -34,7 +33,7 @@
             </div>
         </div>
     </div>
-
+    </section>
     <section class="section">
     <div class="columns">
 
